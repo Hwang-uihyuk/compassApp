@@ -10,7 +10,9 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 public class CompassView extends View {
+    public int azimuth;
     Bitmap bitmap;
+
     public CompassView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
@@ -19,14 +21,14 @@ public class CompassView extends View {
     @Override
     protected  void onDraw(Canvas canvas){
         super.onDraw(canvas);
-
-        super.onDraw(canvas);
         int cx = getWidth()/2;
         int cy = getHeight()/2;
 
         int x0 = cx - bitmap.getWidth()/2;
         int y0 = cy - bitmap.getHeight()/2;
 
+
+        canvas.rotate(-azimuth,x0,y0);
         canvas.drawBitmap(bitmap, x0, y0, null);
     }
 }
